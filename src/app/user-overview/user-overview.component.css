@@ -1,0 +1,4 @@
+div.charts{
+    display: flex;
+    flex-direction: row;
+}
