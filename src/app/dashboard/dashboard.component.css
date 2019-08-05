@@ -14,7 +14,7 @@ label {
   button {
     margin-top: 20px;
     font-family: Arial;
-    background-color: #eee;
+    background-color: rgb(153, 170, 207);
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
@@ -28,12 +28,6 @@ label {
     background-color: #eee;
     color: #ccc;
     cursor: auto;
-  }
-
-  app-header {
-    margin: none;
-    padding: none;
-    border: none;
   }
 
   body {

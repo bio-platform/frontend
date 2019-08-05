@@ -1,7 +1,7 @@
 
 nav {
     font-family: Arial;
-    background-color: rgb(147, 181, 231);
+    background-color: rgb(53, 90, 145);
     border: none;
     margin: none;
     padding: none;
@@ -10,12 +10,9 @@ nav {
 
  a {
      text-decoration: none;
-     text-decoration-color: black;
+     font: Arial;
+     color: aliceblue;
  } 
- a:visited {
-    text-decoration: none;
-    text-decoration-color: black;
-  }
 
   a:active{
     text-decoration: none;
@@ -35,7 +32,7 @@ nav {
     display: flex;
   }
   a.header-user{
-    margin-left: 100px;
+    margin-left: 300px;
   }
 
 
