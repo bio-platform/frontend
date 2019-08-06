@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -10,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { UserOverviewComponent } from './user-overview/user-overview.component';
+
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,9 @@ import { UserOverviewComponent } from './user-overview/user-overview.component';
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
