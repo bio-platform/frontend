@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from './user';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  instances: string[] = [];
+  private apiURL = 'localhost:5050';
+  
+  constructor(private httpClient: HttpClient , private messageService: MessageService) { }
 
-  constructor(private httpClient: HttpClient) { }
+  getNetworks (): Observable<string[]> {
+      this.messageService.add('Dataservice: getNetworks');
+      return this.httpClient.get<string[]>(this.apiURL+'/networks/');
+  }  
 
-  getInstances():void{
-      this.instances.add(this.httpClient.get('localhost:5050'));  
-  }
 }

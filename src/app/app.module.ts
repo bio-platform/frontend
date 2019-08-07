@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserOverviewComponent } from './user-overview/user-overview.component';
 
 import { DataService } from './data.service';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DataService } from './data.service';
     LoginComponent,
     DashboardComponent,
     HeaderComponent,
-    UserOverviewComponent
+    UserOverviewComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
