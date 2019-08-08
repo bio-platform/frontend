@@ -1,16 +1,31 @@
-<h1> Overview</h1>
-<div class='charts'>
-    <div>
-        <canvas baseChart
-                [data]="pieChartData"
-                [labels]="pieChartLabels"
-                [chartType]="pieChartType"></canvas>
+<h1>Overview</h1>
+<h2>Limit Summary</h2>
+<h3>Compute</h3>
+<div class='computeCharts'>
+        <div>
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [colors]= "pieChartColors"
+                    [chartType]="pieChartType"></canvas>
+        </div>
+        
+        <div>
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [colors]= "pieChartColors"  
+                    [chartType]="pieChartType"></canvas>
+        </div>
+        <div>
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [colors]= "pieChartColors"  
+                    [chartType]="pieChartType"></canvas>
+        </div>
     </div>
-    <div>
-        <canvas baseChart
-                [data]="pieChartData"
-                [labels]="pieChartLabels"
-                [chartType]="pieChartType"></canvas>
-    </div>
-</div>
+    
+<h3>Volume</h3>
+<h3>Network</h3>
 

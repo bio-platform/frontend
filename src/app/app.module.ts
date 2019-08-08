@@ -14,6 +14,7 @@ import { UserOverviewComponent } from './user-overview/user-overview.component';
 
 import { DataService } from './data.service';
 import { MessagesComponent } from './messages/messages.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MessagesComponent } from './messages/messages.component';
     DashboardComponent,
     HeaderComponent,
     UserOverviewComponent,
-    MessagesComponent
+    MessagesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
