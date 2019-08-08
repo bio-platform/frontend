@@ -15,9 +15,10 @@ export class DataService {
   getNetworks (): Observable<string[]> {
       this.messageService.add('Dataservice: getNetworks');
       return this.httpClient.get<string[]>(this.apiURL+"/networks");
-  } 
+  }
+   
   
-  getPosts (): Observable<any>{
+  getPosts (): Observable<any>{  //testing purposes
     return this.httpClient.get(this.JsonTestApi+"/posts");
   }
 

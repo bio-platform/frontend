@@ -21,16 +21,16 @@ export class DashboardComponent implements OnInit {
     this.messageService
   }
 
-  backendTest():void{
-      this.messageService.add('DashboardComponent: backendTest');
+  apiTest():void{
+      this.messageService.add('DashboardComponent: apiTest');
       this.dataService.getNetworks().subscribe(
         data=> this.networks = data
       )
       if (this.networks == []){
-        this.messageService.add('DashboardComponent: backendTest assigned');
+        this.messageService.add('DashboardComponent: apiTest assigned');
       }
       else {
-        this.messageService.add('DashboardComponent: backendTest didnt work');
+        this.messageService.add('DashboardComponent: apiTest didnt work');
       }
       
      
