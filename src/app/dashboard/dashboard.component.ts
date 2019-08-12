@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../data.service';
-import { User } from '../user';
 import { Post } from '../post';
+import { Limit } from '../limit'
 import { MessageService } from '../message.service';
 
 @Component({
@@ -11,28 +11,21 @@ import { MessageService } from '../message.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  user: User;
   posts: Post[];
   networks: string[] = [];
+  limits:Limit;
 
   constructor(private http: HttpClient, private dataService: DataService , private messageService: MessageService ) { }
 
   ngOnInit() {
-    this.messageService
   }
 
   apiTest():void{
       this.messageService.add('DashboardComponent: apiTest');
-      this.dataService.getNetworks().subscribe(
-        data=> this.networks = data
+      this.dataService.getLimit().subscribe(
+        data=> {this.limits = new Limit(data); 
+          this.messageService.add('DashboardComponent: subscribe');}
       )
-      if (this.networks == []){
-        this.messageService.add('DashboardComponent: apiTest assigned');
-      }
-      else {
-        this.messageService.add('DashboardComponent: apiTest didnt work');
-      }
-      
      
   }
 
