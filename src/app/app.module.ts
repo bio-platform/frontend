@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+
+
 
 import { ChartsModule } from 'ng2-charts';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +19,8 @@ import { UserOverviewComponent } from './user-overview/user-overview.component';
 import { DataService } from './data.service';
 import { MessagesComponent } from './messages/messages.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NoopAnimationsModule }  from '@angular/platform-browser/animations';
+import { InstancesComponent } from './instances/instances.component';
 
 @NgModule({
   declarations: [
@@ -24,17 +30,19 @@ import { NavbarComponent } from './navbar/navbar.component';
     HeaderComponent,
     UserOverviewComponent,
     MessagesComponent,
-    NavbarComponent
+    NavbarComponent,
+    InstancesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
     HttpClientModule,
+    MatSidenavModule,
+    NoopAnimationsModule,
   ],
-  providers: [DataService],
+  providers: [DataService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-export class PizzaPartyAppModule { }

@@ -1,17 +1,21 @@
 export class Limit{
-    constructor(json:any){
-        floating_ips:json["floating_ips"]
-    }
 
-    floating_ips: limits;
-    instances : limits;
-    cores : limits;
-    ram : limits;
+    floating_ips: {
+        limit: number;
+        used: number;
+    };
+    instances : {
+        limit: number;
+        used: number;
+    };
+    cores : {
+        limit: number;
+        used: number;
+    };
+    ram : {
+        limit: number;
+        used: number;
+    };
 
 
-}
-
-export class limits{
-    limit: number;
-    used: number;
 }

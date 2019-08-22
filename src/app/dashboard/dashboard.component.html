@@ -1,12 +1,16 @@
 <app-header></app-header>
-<div>
-    <button (click)='apiTest()'>Kod_predmetu</button>
-</div>
+<div class="dashboard">
+    <div>
+    
+    </div>
+    <div>
+        <div>
+            <button (click)='apiTest()'>Kod_predmetu</button>
+        </div>
 
-<table class="Limits">
-    <tr *ngFor="let limit of limits">
-        <th>{{limit}}</th>
-    </tr>
-</table>
+        <app-user-overview></app-user-overview>
+        <app-instances></app-instances>
+    </div>
+    
+</div>    
 
-<app-user-overview></app-user-overview>

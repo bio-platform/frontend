@@ -1,9 +1,13 @@
 <app-header></app-header>
 <div id="Login-component">
-    <div>Login :</div>
-    <input type="text" name="login"><br>
-    <div>Password : </div>  
-    <input type="text" name="psswd"><br>
+    <div>
+        <label>Token:
+          <input #token />
+        </label>
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button routerLink="/dashboard" (click)="login(token.value); token.value=''">Log In
+        </button>
+      </div>
     <button routerLink="/dashboard">Log in</button>
     #TODO just submit ot get to dashboard
 </div>

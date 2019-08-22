@@ -33,3 +33,7 @@ label {
   body {
     margin: 0;
   }
+
+  div.dashboard{
+    display: flex;
+  }

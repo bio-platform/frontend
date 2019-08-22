@@ -12,7 +12,7 @@ import { MessageService } from '../message.service';
 })
 export class DashboardComponent implements OnInit {
   posts: Post[];
-  networks: string[] = [];
+  networks: string[];
   limits:Limit;
 
   constructor(private http: HttpClient, private dataService: DataService , private messageService: MessageService ) { }
@@ -23,8 +23,8 @@ export class DashboardComponent implements OnInit {
   apiTest():void{
       this.messageService.add('DashboardComponent: apiTest');
       this.dataService.getLimit().subscribe(
-        data=> {this.limits = new Limit(data); 
-          this.messageService.add('DashboardComponent: subscribe');}
+        data=> {this.limits = data; 
+        this.messageService.add('Limit : '+JSON.stringify(this.limits));}
       )
      
   }
