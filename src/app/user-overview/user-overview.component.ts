@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Label, Color } from 'ng2-charts';
-import { Limit } from '../limit';
+import { Limit } from '../models/limit';
 import { DataService } from '../data.service';
 import { MessageService } from '../message.service';
 
@@ -43,9 +43,8 @@ export class UserOverviewComponent implements OnInit {
         this.pieChartData_ram.push(this.limits.ram.limit-this.limits.ram.used);
         
       },
-      err=>{this.messageService.add("Http Error => "+JSON.stringify(err));
-
-      }
+      //err=>{this.messageService.add("Http Error => "+JSON.stringify(err));
+      //}
     )
 
   

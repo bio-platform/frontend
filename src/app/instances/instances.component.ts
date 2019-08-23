@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import {Network} from '../network';
+import {Network} from '../models/network';
 
 @Component({
   selector: 'app-instances',
