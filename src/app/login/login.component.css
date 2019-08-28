@@ -19,3 +19,18 @@
   button:hover {
     background-color: #cfd8dc;
   }
+
+  mat-form-field {
+    height: 10px;
+  }
+  
+  div.mat-form-field-wrapper{
+    content: 10px;
+    
+  }
+
+  mat-form-field { /* Changes the input styling to just about nothing so that button styling can take over */
+    font-size: 15px;
+  }
+
+  

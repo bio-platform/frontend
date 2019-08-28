@@ -8,7 +8,7 @@ import {Network} from '../models/network';
   styleUrls: ['./instances.component.css']
 })
 export class InstancesComponent implements OnInit {
-  private networks:Network[];
+  public networks:Network[];
 
   constructor(private dataService : DataService) { }
 

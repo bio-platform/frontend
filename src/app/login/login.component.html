@@ -1,13 +1,12 @@
 <app-header></app-header>
 <div id="Login-component">
-    <div>
-        <label>Token:
-          <input #token />
-        </label>
-        <!-- (click) passes input value to add() and then clears the input -->
-        <button routerLink="/dashboard" (click)="login(token.value); token.value=''">Log In
-        </button>
-      </div>
-    <button routerLink="/dashboard">Log in</button>
-    #TODO just submit ot get to dashboard
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Token</mat-label>
+          <input matInput placeholder="" #tokens>
+        </mat-form-field>
+        <button (click)="login(tokens.value)">Log In
+          </button>
+      </p>    
+
 </div>
