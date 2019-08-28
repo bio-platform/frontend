@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
-  private apiURL = "http://localhost:5000";
+  private apiURL = "http://localhost:80/api";
   private headers = new HttpHeaders();
   private response = new HttpResponse();
   
