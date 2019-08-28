@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div id="Login-component">
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Token</mat-label>
+          <input matInput placeholder="" #tokens>
+        </mat-form-field>
+        <button (click)="login(tokens.value)">Log In
+          </button>
+      </p>    
+
+</div>

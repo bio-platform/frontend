@@ -1,0 +1,51 @@
+<h1>Overview</h1>
+<h2>Limit Summary</h2>
+<table class='computeCharts'>
+        <tr>
+        <td>
+            <canvas baseChart
+                    [data]="pieChartData_floating"
+                    [labels]="pieChartLabels"
+                    [colors]= "pieChartColors"
+                    [chartType]="pieChartType"></canvas>
+        </td>
+        
+        <td>
+            <canvas baseChart
+                    [data]="pieChartData_instances"
+                    [labels]="pieChartLabels"
+                    [colors]= "pieChartColors"  
+                    [chartType]="pieChartType"></canvas>
+        </td>
+        <td>
+            <canvas baseChart
+                    [data]="pieChartData_cores"
+                    [labels]="pieChartLabels"
+                    [colors]= "pieChartColors"  
+                    [chartType]="pieChartType"></canvas>
+        </td>
+        <td>
+            <canvas baseChart
+                    [data]="pieChartData_ram"
+                    [labels]="pieChartLabels"
+                    [colors]= "pieChartColors"  
+                    [chartType]="pieChartType"></canvas>
+        </td>
+        </tr>
+        <tr>
+            <td>
+                Floating_ips
+            </td>
+            <td>
+                Instances
+            </td>
+            <td>
+                Cores
+            </td>
+            <td>
+                Ram
+            </td>
+        </tr>
+    </table>
+    
+

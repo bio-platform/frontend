@@ -1,0 +1,36 @@
+
+  input {
+    height: 2em;
+    font-size: 1em;
+    padding-left: .4em;
+    margin: auto;
+    align-content: center
+  }
+  button {
+    margin-top: 20px;
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+
+  mat-form-field {
+    height: 10px;
+  }
+  
+  div.mat-form-field-wrapper{
+    content: 10px;
+    
+  }
+
+  mat-form-field { /* Changes the input styling to just about nothing so that button styling can take over */
+    font-size: 15px;
+  }
+
+  

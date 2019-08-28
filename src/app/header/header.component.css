@@ -1,0 +1,39 @@
+
+nav {
+    font-family: Arial;
+    background-color: rgb(53, 90, 145);
+    border: none;
+    margin: none;
+    padding: none;
+    padding: 10px 10px;
+  }
+
+ a {
+     text-decoration: none;
+     font: Arial;
+     color: aliceblue;
+ } 
+
+  a:active{
+    text-decoration: none;
+    text-decoration-color: black;
+  }
+
+
+  img {
+    display: block;
+    height: 30px;
+    margin: 0 0;
+    width: auto;
+    align-content : left;
+  }
+
+  div {
+    display: flex;
+  }
+  a.header-user{
+    margin-left: 300px;
+  }
+
+
+ 

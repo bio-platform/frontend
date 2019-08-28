@@ -1,0 +1,13 @@
+<h1>User Networks</h1>
+<table>
+    <tr>
+        <th>Created at</th>
+        <th>Project id</th>
+        <th>Id</th>
+    </tr>
+    <tr *ngFor = "let network of networks">
+        <td>{{network.created_at}}</td>
+        <td>{{network.project_id}}</td>
+        <td>{{network.id}}</td>
+    </tr>
+</table>
