@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
-  private apiURL = "http://localhost:80/api";
+  private apiURL =  "http://bio-portal.metacentrum.cz/api"//"http://localhost:5000"; //80/api
   private headers = new HttpHeaders();
   private response = new HttpResponse();
   
