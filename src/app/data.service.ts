@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
-  private apiURL = "http://localhost:80/api/";
+  private apiURL = "http://localhost:80/api";
   private headers = new HttpHeaders();
   private response = new HttpResponse();
   
@@ -24,7 +24,7 @@ export class DataService {
   login(inputToken:Token):void{
       //console.log("DataService:login => "+JSON.stringify(inputToken));
         
-      this.httpClient.post(this.apiURL,inputToken,{observe: 'response'}).toPromise().then((data:any) => {
+      this.httpClient.post(this.apiURL+"/",inputToken,{observe: 'response'}).toPromise().then((data:any) => {
         console.log('isLogged = true');
         this.router.navigate(['dashboard']);
 
@@ -39,7 +39,7 @@ export class DataService {
   getLimit (): Observable<Limit> {
      
       this.messageService.add('Dataservice: getLimit');
-      return this.httpClient.get<Limit>(this.apiURL+"limits/");
+      return this.httpClient.get<Limit>(this.apiURL+"/limits/");
   }
 
   //getNetwork (): Observable<Network[]> {
