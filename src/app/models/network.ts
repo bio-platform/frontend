@@ -1,5 +1,4 @@
 export class Network{
-    created_at:number
-    projectId:string
+    name:string;
     id:string
 }

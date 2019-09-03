@@ -4,8 +4,12 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Limit } from './models/limit';
 import { Network } from './models/network';
-import { CookieService} from 'ngx-cookie-service';
 import { Token } from './models/token';
+import { Keypair} from './models/key_pair';
+import { MetaData } from './models/metadata';
+import { InstanceData } from './models/instance_data';
+import { Instance } from './models/instance';
+import { CookieService} from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 
@@ -13,9 +17,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
-  private apiURL =  "http://bio-portal.metacentrum.cz/api"//"http://localhost:5000"; //80/api
+  private apiURL =  "http://localhost:5000"//"http://bio-portal.metacentrum.cz/api"
   private headers = new HttpHeaders();
   private response = new HttpResponse();
+  private instance: Instance;
   
   
   
@@ -37,27 +42,41 @@ export class DataService {
   }
 
   getLimit (): Observable<Limit> {
-     
-      this.messageService.add('Dataservice: getLimit');
       return this.httpClient.get<Limit>(this.apiURL+"/limits/");
   }
 
-  //getNetwork (): Observable<Network[]> {
-    //this.messageService.add('Dataservice: getNetwork');
-    //return this.httpClient.get<Network[]>(this.apiURL+"network/");
-//}
+  getNetwork (): Observable<Network[]> {
+    return this.httpClient.get<Network[]>(this.apiURL+"/networks/");
+  }
 
-  /*postInstance():void{
-    this.httpClient.post(this.apiURL/instances,instanceData,{observe: 'response'}).toPromise().then((data:any) => {
-      console.log('isLogged = true');
-      this.router.navigate(['dashboard']);
+  getKeys (): Observable<Keypair[]> {
+    return this.httpClient.get<Keypair[]>(this.apiURL+"/keypairs/");
+  }
 
+  getInstances (): Observable<Instance[]>{
+    return this.httpClient.get<Instance[]>(this.apiURL+"/instances/");  
+  }
+
+  postInstance(instanceData:InstanceData):Instance{
+    this.httpClient.post(this.apiURL+"/instances/",instanceData,{observe: 'response'}).toPromise().then((data:any) => {
+      this.instance = data;
+  
     },
     (err:any) =>{
       console.log(err);
     });
+    return this.instance;
     
-  }*/
+  }
+
+  putMetadata(instance:Instance, metaData:MetaData):void{
+    this.httpClient.put(this.apiURL+"/metadata/"+instance.id+"/",metaData,{observe: 'response'}).toPromise().then((data:any) => {
+      console.log("data:"+data);
+    },
+    (err:any) =>{
+      console.log("err:"+JSON.stringify(err));
+    });    
+  }
    
   
 

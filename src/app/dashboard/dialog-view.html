@@ -1,38 +1,55 @@
 <div mat-dialog-content>
-    <p>Fill additional data for instance</p>
-    <div>
+    <p>Fill additional data to create instance</p>
+    <!--<div>
         <mat-form-field>
             <label>CPU</label>
-            <mat-select class="cpu" matNativeControl [value]="selected_cpu">
-                <mat-option value="cpu_option1">1</mat-option>
-                <mat-option value="cpu_option2">2</mat-option>
-                <mat-option value="cpu_option3">3</mat-option>
+            <mat-select matNativeControl [(ngModel)]="selectedCpu" name="cpu">
+                <mat-option value=1>1</mat-option>
+                <mat-option value=2>2</mat-option>
+                <mat-option value=3>3</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field>
             <label>Memory</label>
-            <mat-select class="mem" matNativeControl [value]="selected_mem">
-                <mat-option value="mem_option1">2Gb</mat-option>
-                <mat-option value="mem_option2">4GB</mat-option>
-                <mat-option value="mem_option3">8GB</mat-option>
-                <mat-option value="mem_option3">16GB</mat-option>
+            <mat-select matNativeControl [(ngModel)]="selectedMem" name="mem">
+                <mat-option value=2>2Gb</mat-option>
+                <mat-option value=4>4GB</mat-option>
+                <mat-option value=8>8GB</mat-option>
+                <mat-option value=16>16GB</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field>
             <label>Disk</label>
-            <mat-select class="disk" matNativeControl [value]="selected_disk">
-                <mat-option value="disk_option1">1</mat-option>
-                <mat-option value="disk_option2">2</mat-option>
-
+            <mat-select matNativeControl [(ngModel)]="selectedDisk" name="disk">
+                <mat-option value=1>1</mat-option>
+                <mat-option value=2>2</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
 
+</div>-->
+<div>
+    <mat-form-field>
+        <label>Key</label>
+        <mat-select matNativeControl [(ngModel)]="selectedCpu" name="cpu">
+            <mat-option *ngFor="let key of keys" [value]="key.value">{{key.viewValue}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="outline">
+        <mat-label>Login</mat-label>
+        <input matInput placeholder="" #login>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="" #email>
+      </mat-form-field>
 </div>
 <div mat-dialog-actions>
-    <button (click)="onNoClick()">Create instance</button>
+    <button (click)="onNoClick(login.value,email.value)">Create instance</button>
 </div>
