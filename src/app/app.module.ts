@@ -9,7 +9,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule} from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -59,7 +59,7 @@ import { CallbackComponent } from './callback/callback.component';
     Dialogview,
     LoginDialog,
   ],
-  providers: [DataService, CookieService,Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [DataService, CookieService,Location, {provide: LocationStrategy, useClass: PathLocationStrategy}, MatDialogModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

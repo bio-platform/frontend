@@ -4,15 +4,14 @@ import { DataService } from '../services/data.service';
 import { Limit } from '../models/limit'
 import { Keypair } from '../models/key_pair';
 import { Network } from '../models/network';
-import { SecurityGroup, SecurityGroupRules } from '../models/security_groups'
+import { SecurityGroup} from '../models/security_groups'
 import { MessageService } from '../services/message.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogContent } from '@angular/material/dialog';
 import { InstanceData } from '../models/instance_data';
 import { MetaData } from '../models/metadata';
 import { Inject } from '@angular/core';
 import { FIP } from '../models/floating_ips';
 import { Instance } from '../models/instance';
-import { ThemeService } from 'ng2-charts';
 
 
 export class DialogData {
@@ -27,7 +26,7 @@ export class DialogData {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {  
   limits: Limit;
 
 

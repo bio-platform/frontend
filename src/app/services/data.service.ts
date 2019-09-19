@@ -19,9 +19,9 @@ import { FIP } from '../models/floating_ips';
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class DataService {  //DataService takes care of all http requests and comunication with API
   private apiURL = "http://bio-portal.metacentrum.cz/api";
-  private instance: Instance;
+  //private instance: Instance;
   private project_id:string;
   private user_name:string;
   private user_email:string;
@@ -33,6 +33,11 @@ export class DataService {
   login(inputToken:Token):any{ 
       return this.httpClient.post(this.apiURL+"/",inputToken);
   }
+
+  /*
+    If you need to get different data from a given GET request go to ../models/<the object you want> and add parameter,
+    it will be automatically parsed from the JSON response
+  */
 
   getLimit (): Observable<Limit> {
       return this.httpClient.get<Limit>(this.apiURL+"/limits/");
@@ -68,7 +73,7 @@ export class DataService {
 
   putProject(projectid:Project):void{
     this.httpClient.put(this.apiURL+'/',{project_id:projectid},{observe: 'response'}).toPromise().then((data:any) => {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['dashboard']);  //after a project is selected the authentization proces is done and used gets redirected to dasboard
     },
     (err:any) => {
         console.log(err);
@@ -88,6 +93,7 @@ export class DataService {
     this.httpClient.post(this.apiURL+"/security_groups/"+id+"/security_group_rules/",{type:"ssh"}).toPromise().then((data:any) => {
     },
     (err:any) =>{
+      console.log(err);
     });    
     
   }
@@ -96,6 +102,7 @@ export class DataService {
     this.httpClient.post(this.apiURL+"/security_groups/"+id+"/security_group_rules/",{type:"all_icmp"}).toPromise().then((data:any) => {
     },
     (err:any) =>{
+      console.log(err);
     });    
     
   }
@@ -108,8 +115,13 @@ export class DataService {
     this.httpClient.put(this.apiURL+"/metadata/"+instance.id+"/",metaData,{observe: 'response'}).toPromise().then((data:any) => {
     },
     (err:any) =>{
+      console.log(err);
     });    
   }
+
+  /*
+    getters and setters added for ease of passing important data from loginComponent to dashboardComponent, parent child structure isnt in place
+  */
 
   setUserName(name:string):void{
     this.user_name=name;
