@@ -16,3 +16,15 @@ button {
     color: #ccc;
     cursor: auto;
   }
+  div.spinner{
+    margin:0 auto;
+  }
+
+  #x{
+    position: relative;
+    float: right;
+    top: -20px;
+    right: -20px;
+    margin: 0;
+  }
+  

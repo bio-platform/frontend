@@ -1,0 +1,15 @@
+<div *ngIf="gotProjects">
+    <mat-form-field>
+        <label>Project</label>
+        <mat-select matNativeControl [(ngModel)]="selectedProject" name="project">
+            <mat-option *ngFor="let project of this.projects.projects" [value]="project.id">{{project.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button (click)="putProject(selectedProject)">Login</button>
+    </div>
+</div>
+<div *ngIf="!gotProjects">
+    <mat-spinner style="margin:0 auto;">
+    </mat-spinner>
+</div>

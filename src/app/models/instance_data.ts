@@ -1,7 +1,11 @@
 export class InstanceData {
-    flavor: string = "standard.small";
-    image: string = "cirros-0.4.0-x86_64";
+    flavor: string;
+    image: string;
     key_name: string;
-    servername: string = "new_server_1";
+    servername: string;
     network_id: string ;
+    metadata:{
+        Bioclass_user:string;
+        Bioclass_email:string; 
+    }
 }

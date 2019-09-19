@@ -1,55 +1,89 @@
-<div mat-dialog-content>
-    <p>Fill additional data to create instance</p>
-    <!--<div>
-        <mat-form-field>
-            <label>CPU</label>
-            <mat-select matNativeControl [(ngModel)]="selectedCpu" name="cpu">
-                <mat-option value=1>1</mat-option>
-                <mat-option value=2>2</mat-option>
-                <mat-option value=3>3</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field>
-            <label>Memory</label>
-            <mat-select matNativeControl [(ngModel)]="selectedMem" name="mem">
-                <mat-option value=2>2Gb</mat-option>
-                <mat-option value=4>4GB</mat-option>
-                <mat-option value=8>8GB</mat-option>
-                <mat-option value=16>16GB</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field>
-            <label>Disk</label>
-            <mat-select matNativeControl [(ngModel)]="selectedDisk" name="disk">
-                <mat-option value=1>1</mat-option>
-                <mat-option value=2>2</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-
-</div>-->
-<div>
-    <mat-form-field>
-        <label>Key</label>
-        <mat-select matNativeControl [(ngModel)]="selectedCpu" name="cpu">
-            <mat-option *ngFor="let key of keys" [value]="key.value">{{key.viewValue}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+<div *ngIf="!isVisible" class="spinner">
+    <mat-spinner style="margin:0 auto;">
+    </mat-spinner>
 </div>
-<div>
+<div *ngIf="!goodKeys">
+    <button (click)="close()" id="x">X</button>
+    <p>You dont have ssh keys</p>
+    <p>Go to <a href="https://dashboard.cloud.muni.cz/project/key_pairs" target="_blank">
+            https://dashboard.cloud.muni.cz/project/key_pairs </a> to import or create your key</p>
+    <p>Or create key here: </p>
     <mat-form-field appearance="outline">
-        <mat-label>Login</mat-label>
-        <input matInput placeholder="" #login>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="" #email>
-      </mat-form-field>
+        <mat-label>Key Name</mat-label>
+        <input matInput placeholder="" #key>
+    </mat-form-field>
+    <button (click)="createKey(key.value)">Create Key</button>
+    <div *ngIf="this.privateKey != null">
+        <h4>Save the key below, you will need it to connect to your VM</h4>
+        <textarea style="height:450px ; width:530px">
+            {{this.privateKey}}
+        </textarea>
+        <div>
+            <button (click)="continueToMain()">Continue</button>
+        </div>
+    </div>
 </div>
-<div mat-dialog-actions>
-    <button (click)="onNoClick(login.value,email.value)">Create instance</button>
+<div *ngIf="isVisible && goodKeys && goodRescources && !showFIP">
+    <button (click)="close()" id="x">X</button>
+    <p>Fill additional data to create instance</p>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Instance Name</mat-label>
+            <input matInput placeholder="" #name>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <label>Key</label>
+            <mat-select matNativeControl [(ngModel)]="selectedKey" name="key">
+                <mat-option *ngFor="let key of this.keys" [value]="key.name">{{key.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <label>Network</label>
+                    <mat-select matNativeControl [(ngModel)]="selectedNetwork" name="network">
+                        <mat-option *ngFor="let network of networks" [value]="network.id">{{network.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+            <td>
+                <p>Dont change defaut network if not needed</p>
+            </td>
+        </tr>
+    </table>
+    <div mat-dialog-actions>
+        <button (click)="onNoClick(name.value)">Create instance</button>
+    </div>
+</div>
+<div *ngIf="!goodRescources">
+    <button (click)="close()" id="x">X</button>
+    <div>{{popupMessage}}</div>
+    <div>
+        Go to openstack and clean unnecessary instances<a href="https://dashboard.cloud.muni.cz/project/instances/"
+            target="_blank">
+            https://dashboard.cloud.muni.cz/project/instances/ </a>
+    </div>
+</div>
+<div *ngIf="showFIP">
+    <button (click)="close()" id="x">X</button>
+    <div *ngIf="gotFIP">
+        <p>You can access your instance at</p>
+        <div>{{floatingIp.name}}</div>
+    </div>
+    <div *ngIf="!gotFIP">
+        <p>Couldnt allocate FIP to instance</p>
+        <div>
+            go to <a href="https://dashboard.cloud.muni.cz/project/floating_ips/" target="_blank">
+                https://dashboard.cloud.muni.cz/project/floating_ips/ </a>
+            and release some FIP, when done try to allocat FIP
+        </div>
+        <div class="close">
+            <button (click)="postFIP()">Allocate FIP</button>
+        </div>
+    </div>
 </div>

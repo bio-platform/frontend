@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Label, Color } from 'ng2-charts';
 import { Limit } from '../models/limit';
-import { DataService } from '../data.service';
-import { MessageService } from '../message.service';
+import { DataService } from '../services/data.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-user-overview',
