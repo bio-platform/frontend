@@ -7,4 +7,5 @@ export class SecurityGroup{
 export class SecurityGroupRules{
     direction:string;
     protocol:string;
+    port_range_max:number;
 }

@@ -4,7 +4,7 @@ import { DataService } from '../services/data.service';
 import { Limit } from '../models/limit'
 import { Keypair } from '../models/key_pair';
 import { Network } from '../models/network';
-import { SecurityGroup} from '../models/security_groups'
+import { SecurityGroup } from '../models/security_groups'
 import { MessageService } from '../services/message.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogContent } from '@angular/material/dialog';
 import { InstanceData } from '../models/instance_data';
@@ -26,7 +26,7 @@ export class DialogData {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {  
+export class DashboardComponent implements OnInit {
   limits: Limit;
 
 
@@ -76,14 +76,16 @@ export class Dialogview {
   public securityGroup: SecurityGroup;
   private hasSsh: boolean = false;
   private hasIcmp: boolean = false;
+  private hasHttp: boolean = false;
+  private hasHttps: boolean = false;
   public popupMessage: string = "";
   public privateKey: string;
   public goodKeys: boolean = true;
   public goodRescources: boolean = true;
-  public showFIP:boolean = false;
-  public gotFIP:boolean = true;
+  public showFIP: boolean = false;
+  public gotFIP: boolean = true;
   public floatingIPs: FIP[];
-  public floatingIp:FIP;
+  public floatingIp: FIP;
   public fipNetwork: Network;
   public instance: Instance;
 
@@ -136,7 +138,7 @@ export class Dialogview {
     )
   }
 
-  checkRules(): void {  //checks if 
+  checkRules(): void {  
     this.dataService.getSecurityGroups().subscribe(data => {
       this.securityGroups = data;
       for (let group of this.securityGroups) {
@@ -147,7 +149,16 @@ export class Dialogview {
       }
       for (let rule of this.securityGroup.security_group_rules) {
         if (rule.protocol == "tcp") {
-          this.hasSsh = true;
+          if (rule.port_range_max==22){
+            this.hasSsh = true;
+          }
+          if (rule.port_range_max==80){
+            this.hasHttp = true;
+          }
+          if (rule.port_range_max==443){
+            this.hasHttps = true;
+          }
+          
         }
         if (rule.protocol == "icmp") {
           this.hasIcmp = true;
@@ -158,6 +169,12 @@ export class Dialogview {
       }
       if (!this.hasSsh) {
         this.dataService.postSecurityRulesSsh(this.securityGroup.id);
+      }
+      if (!this.hasHttp) {
+        this.dataService.postSecurityRulesHttp(this.securityGroup.id);
+      }
+      if (!this.hasHttps) {
+        this.dataService.postSecurityRulesHttps(this.securityGroup.id);
       }
     },
       err => {
@@ -199,21 +216,6 @@ export class Dialogview {
         this.isVisible = true;
         this.popupMessage += 'You dont have enough free RAM, you need 16GB free \n';
       }
-
-      /*this.dataService.getFloatingIPS().subscribe(data => {
-        this.floatingIPs = data;
-        if (this.floatingIPs.length >= this.limit.floating_ips.limit) {
-          this.goodRescources = false;
-          this.popupMessage += 'You have too many floating_ips \n';
-        }
-        for (let fip of this.floatingIPs) {
-          if (fip.project_id == this.dataService.getProjectId()) {
-
-          }
-        }
-
-      })*/
-
     });
   }
 
@@ -228,7 +230,7 @@ export class Dialogview {
       key_name: this.selectedKey, servername: name, network_id: this.selectedNetwork, metadata: this.metaData
     };
     this.dataService.postInstance(this.instanceData).subscribe(data => {
-      
+
       this.instance = data;
       this.postFIP();
     });
@@ -236,9 +238,9 @@ export class Dialogview {
   }
 
   postFIP(): void {
-    this.isVisible=false;
-    this.showFIP=false;
-    this.gotFIP=true;
+    this.isVisible = false;
+    this.showFIP = false;
+    this.gotFIP = true;
     if (this.instance.status != "ACTIVE") {
       this.delay(1500).then(any => {
         this.dataService.getInstance(this.instance.id).subscribe(
@@ -251,15 +253,15 @@ export class Dialogview {
       this.dataService.postFloatinIp(this.instance.id, this.fipNetwork.id).subscribe(
         data => {
           console.log(JSON.stringify(data));
-          this.isVisible=true;
+          this.isVisible = true;
           this.floatingIp = data;
-          this.showFIP=true;
+          this.showFIP = true;
 
-        }, err=>{
+        }, err => {
           console.log(err);
-          this.isVisible=true;
-          this.showFIP=true;
-          this.gotFIP=false;
+          this.isVisible = true;
+          this.showFIP = true;
+          this.gotFIP = false;
 
         });
     }

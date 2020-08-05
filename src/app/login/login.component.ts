@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
     let that = this;
     var mgr = new UserManager({
       response_type: 'id_token token',
-      scope: 'eduPersonEntitlement forwardedEntitlement openid profile edu_person_entitlements email eduperson_entitlement',
+      scope: 'openid profile email eduperson_entitlement',
       authority: 'https://login.cesnet.cz/oidc/',
       client_id: 'ca73360a-c510-4bc0-afb5-f5c5eee603ca',
-      redirect_uri:'http://localhost:4200/callback/',//'http://bio-portal.metacentrum.cz/callback',//
+      redirect_uri: 'http://localhost:4200/callback/',//'http://bio-portal.metacentrum.cz/callback',
       post_logout_redirect_uri: 'http://bio-portal.metacentrum.cz/',
     })
     
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         that.dataService.login({token:user.access_token}).subscribe(data => {
           that.dataService.setUserEmail(user.profile.email);
           that.dataService.setUserName(user.profile.preferred_username);
+          //console.log(user.profile.email, user.profile.preferred_username);
           that.openDialog();
         });
         //document.getElementById('result').innerText = "Welcome" + user.profile.name + "!";
@@ -46,13 +47,14 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login(inputToken: string): void {
+  /*login(inputToken: string): void {
+    //console.log(inputToken);
     this.token = { token: inputToken };
     this.dataService.login(this.token).subscribe(data => {
       this.openDialog();
     });
     
-  }
+  }*/
 
   openDialog(): void {
 
@@ -83,6 +85,8 @@ export class LoginDialog {
     this.dataService.getProjects().subscribe(
       data => {
         this.projects = data;
+        console.log("Got projects: \n");
+        console.log(this.projects);
         this.gotProjects = true;
       })
   }

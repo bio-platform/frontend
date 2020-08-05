@@ -20,8 +20,7 @@ import { FIP } from '../models/floating_ips';
   providedIn: 'root'
 })
 export class DataService {  //DataService takes care of all http requests and comunication with API
-  private apiURL = "http://bio-portal.metacentrum.cz/api";
-  //private instance: Instance;
+  private apiURL = "http://bio-portal.metacentrum.cz/api";//"http://localhost:5000";
   private project_id:string;
   private user_name:string;
   private user_email:string;
@@ -100,6 +99,24 @@ export class DataService {  //DataService takes care of all http requests and co
 
   postSecurityRulesIcmp(id:string):void{
     this.httpClient.post(this.apiURL+"/security_groups/"+id+"/security_group_rules/",{type:"all_icmp"}).toPromise().then((data:any) => {
+    },
+    (err:any) =>{
+      console.log(err);
+    });    
+    
+  }
+
+  postSecurityRulesHttp(id:string):void{
+    this.httpClient.post(this.apiURL+"/security_groups/"+id+"/security_group_rules/",{type:"http"}).toPromise().then((data:any) => {
+    },
+    (err:any) =>{
+      console.log(err);
+    });    
+    
+  }
+
+  postSecurityRulesHttps(id:string):void{
+    this.httpClient.post(this.apiURL+"/security_groups/"+id+"/security_group_rules/",{type:"https"}).toPromise().then((data:any) => {
     },
     (err:any) =>{
       console.log(err);
