@@ -24,7 +24,7 @@
     "angular.piechart": "^0.2.8",
     "chart.js": "^2.9.3",
     "jquery": "^3.5.1",
-    "ng2-charts": "^2.3.2",
+    "ng2-charts": "^2.3.3",
     "ngx-cookie-service": "^2.4.0",
     "oidc-client": "^1.10.1",
     "rxjs": "~6.4.0",

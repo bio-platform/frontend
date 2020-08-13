@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       scope: 'openid profile email eduperson_entitlement',
       authority: 'https://login.cesnet.cz/oidc/',
       client_id: 'ca73360a-c510-4bc0-afb5-f5c5eee603ca',
-      redirect_uri: 'http://bio-portal.metacentrum.cz/callback',//'http://localhost:4200/callback/',
+      redirect_uri: 'http://localhost:4200/callback/',//'http://bio-portal.metacentrum.cz/callback',
       post_logout_redirect_uri: 'http://bio-portal.metacentrum.cz/',
     })
     
@@ -47,14 +47,14 @@ export class LoginComponent implements OnInit {
 
   }
 
-  /*login(inputToken: string): void {
-    //console.log(inputToken);
+  login(inputToken: string): void {
+    console.log(inputToken);
     this.token = { token: inputToken };
     this.dataService.login(this.token).subscribe(data => {
       this.openDialog();
     });
     
-  }*/
+  }
 
   openDialog(): void {
 
