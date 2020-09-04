@@ -1,0 +1,3 @@
+{   "callback": "http://bio-portal.metacentrum.cz/callback",
+    "apiUrl": "https://bio-portal.metacentrum.cz/api/"
+}
