@@ -14,13 +14,13 @@ import { CookieService} from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { SecurityGroup } from "../models/security_groups";
 import { FIP } from '../models/floating_ips';
-
+import * as config from ../../../../config.json 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {  //DataService takes care of all http requests and comunication with API
-  private apiURL = "https://bio-portal.metacentrum.cz/api";//"http://localhost:5000";
+  private apiURL = config["apiUrl"];//"http://localhost:5000";
   private project_id:string;
   private user_name:string;
   private user_email:string;
