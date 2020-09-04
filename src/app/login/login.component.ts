@@ -7,7 +7,7 @@ import { UserManager, UserManagerSettings } from 'oidc-client';
 
 import { Token } from '../models/token';
 import { Project, ProjectList } from '../models/projects';
-
+import * as config from ../../../../config.json
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
       scope: 'openid profile email eduperson_entitlement',
       authority: 'https://login.cesnet.cz/oidc/',
       client_id: 'ca73360a-c510-4bc0-afb5-f5c5eee603ca',
-      redirect_uri: 'http://bio-portal.metacentrum.cz/callback',
-      post_logout_redirect_uri: 'https://bio-portal.metacentrum.cz/',
+      redirect_uri: config.callback,
+      post_logout_redirect_uri: config.postLogoutUrl,
     })
     
     mgr.getUser().then(function (user) {
