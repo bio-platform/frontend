@@ -20,7 +20,7 @@ import { FIP } from '../models/floating_ips';
   providedIn: 'root'
 })
 export class DataService {  //DataService takes care of all http requests and comunication with API
-  private apiURL = "http://bio-portal.metacentrum.cz/api";//"http://localhost:5000";
+  private apiURL = "https://bio-portal.metacentrum.cz/api";//"http://localhost:5000";
   private project_id:string;
   private user_name:string;
   private user_email:string;
