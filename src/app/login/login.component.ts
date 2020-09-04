@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
       scope: 'openid profile email eduperson_entitlement',
       authority: 'https://login.cesnet.cz/oidc/',
       client_id: 'ca73360a-c510-4bc0-afb5-f5c5eee603ca',
-      redirect_uri: 'http://localhost:4200/callback/',//'http://bio-portal.metacentrum.cz/callback',
-      post_logout_redirect_uri: 'http://bio-portal.metacentrum.cz/',
+      redirect_uri: 'https://bio-portal.metacentrum.cz/callback',
+      post_logout_redirect_uri: 'https://bio-portal.metacentrum.cz/',
     })
     
     mgr.getUser().then(function (user) {
