@@ -14,7 +14,7 @@ import { CookieService} from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { SecurityGroup } from "../models/security_groups";
 import { FIP } from '../models/floating_ips';
-import * as config from '../../../../config.json'; 
+import * as config from '../../../config.json'; 
 
 @Injectable({
   providedIn: 'root'
