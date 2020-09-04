@@ -7,7 +7,7 @@ import { UserManager, UserManagerSettings } from 'oidc-client';
 
 import { Token } from '../models/token';
 import { Project, ProjectList } from '../models/projects';
-import * as config from '../../../../config.json';
+import * as config from '../../../config.json';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
