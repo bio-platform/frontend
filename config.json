@@ -1,3 +1,5 @@
 {   "callback": "http://bio-portal.metacentrum.cz/callback",
-    "apiUrl": "https://bio-portal.metacentrum.cz/api/"
+    "apiUrl": "https://bio-portal.metacentrum.cz/api/",
+    "postLogoutUrl": "https://bio-portal.metacentrum.cz/"
+
 }
