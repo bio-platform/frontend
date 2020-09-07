@@ -7,7 +7,8 @@ import { UserManager, UserManagerSettings } from 'oidc-client';
 
 import { Token } from '../models/token';
 import { Project, ProjectList } from '../models/projects';
-import * as config from '../../../config.json';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   private token: Token;
 
 
-  constructor(private router: Router, public dialog: MatDialog, private dataService: DataService) { 
+  constructor(private router: Router, public dialog: MatDialog, private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -27,10 +28,10 @@ export class LoginComponent implements OnInit {
       scope: 'openid profile email eduperson_entitlement',
       authority: 'https://login.cesnet.cz/oidc/',
       client_id: 'ca73360a-c510-4bc0-afb5-f5c5eee603ca',
-      redirect_uri: config.callback,
-      post_logout_redirect_uri: config.postLogoutUrl,
+      redirect_uri: environment.callback,
+      post_logout_redirect_uri: environment.postLogoutUrl,
     })
-    
+
     mgr.getUser().then(function (user) {
       if (user) {
         that.dataService.login({token:user.access_token}).subscribe(data => {
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.dataService.login(this.token).subscribe(data => {
       this.openDialog();
     });
-    
+
   }
 
   openDialog(): void {
