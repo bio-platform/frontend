@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   enviromentName: 'testing',
-  callback: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/',
+  callback: 'https://ip-147-251-124-112.flt.cloud.muni.cz/callback/',
   apiUrl: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/',
-  postLogoutUrl: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/'
+  postLogoutUrl: 'https://ip-147-251-124-112.flt.cloud.muni.cz/'
 };
 
 /*
