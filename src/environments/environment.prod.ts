@@ -8,7 +8,7 @@
 export const environment = {
   production: true,
   enviromentName: 'testing',
-  callback: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/',
+  callback: 'http://localhost:4200/callback/',
   apiUrl: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/',
   postLogoutUrl: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/'
 };
