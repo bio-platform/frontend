@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   enviromentName: 'testing',
-  callback: 'http://localhost:4200/callback/',
+  callback: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/',
   apiUrl: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/',
   postLogoutUrl: 'https://ip-147-251-124-112.flt.cloud.muni.cz/api/'
 };
