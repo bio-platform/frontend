@@ -14,22 +14,22 @@ import { CookieService} from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { SecurityGroup } from "../models/security_groups";
 import { FIP } from '../models/floating_ips';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {  //DataService takes care of all http requests and comunication with API
-  private apiURL = "http://bio-portal.metacentrum.cz/api";//"http://localhost:5000";
+  private apiURL = environment.apiUrl;//"http://localhost:5000";
   private project_id:string;
   private user_name:string;
   private user_email:string;
-  
-  
-  
+
+
+
   constructor(private httpClient: HttpClient , private messageService: MessageService, private cookieService:CookieService, private router:Router) { }
 
-  login(inputToken:Token):any{ 
+  login(inputToken:Token):any{
       return this.httpClient.post(this.apiURL+"/",inputToken);
   }
 
@@ -51,11 +51,11 @@ export class DataService {  //DataService takes care of all http requests and co
   }
 
   getInstances (): Observable<Instance[]>{
-    return this.httpClient.get<Instance[]>(this.apiURL+"/instances/");  
+    return this.httpClient.get<Instance[]>(this.apiURL+"/instances/");
   }
 
   getInstance (id:string): Observable<Instance>{
-    return this.httpClient.get<Instance>(this.apiURL+"/instances/"+id+"/");  
+    return this.httpClient.get<Instance>(this.apiURL+"/instances/"+id+"/");
   }
 
   getSecurityGroups (): Observable<SecurityGroup[]>{
@@ -81,7 +81,7 @@ export class DataService {  //DataService takes care of all http requests and co
 
 
   postInstance(instanceData:InstanceData):Observable<Instance>{
-    return this.httpClient.post<Instance>(this.apiURL+"/instances/",instanceData);  
+    return this.httpClient.post<Instance>(this.apiURL+"/instances/",instanceData);
   }
 
   postKeyPairs(name:string):Observable<Keypair>{
@@ -93,8 +93,8 @@ export class DataService {  //DataService takes care of all http requests and co
     },
     (err:any) =>{
       console.log(err);
-    });    
-    
+    });
+
   }
 
   postSecurityRulesIcmp(id:string):void{
@@ -102,8 +102,8 @@ export class DataService {  //DataService takes care of all http requests and co
     },
     (err:any) =>{
       console.log(err);
-    });    
-    
+    });
+
   }
 
   postSecurityRulesHttp(id:string):void{
@@ -111,8 +111,8 @@ export class DataService {  //DataService takes care of all http requests and co
     },
     (err:any) =>{
       console.log(err);
-    });    
-    
+    });
+
   }
 
   postSecurityRulesHttps(id:string):void{
@@ -120,12 +120,12 @@ export class DataService {  //DataService takes care of all http requests and co
     },
     (err:any) =>{
       console.log(err);
-    });    
-    
+    });
+
   }
 
   postFloatinIp(instance_id:string, network_id:string):Observable<FIP>{
-    return this.httpClient.post<FIP>(this.apiURL+"/floating_ips/", {instance_id:instance_id,network_id:network_id});   
+    return this.httpClient.post<FIP>(this.apiURL+"/floating_ips/", {instance_id:instance_id,network_id:network_id});
   }
 
   putMetadata(instance:Instance, metaData:MetaData):void{
@@ -133,7 +133,7 @@ export class DataService {  //DataService takes care of all http requests and co
     },
     (err:any) =>{
       console.log(err);
-    });    
+    });
   }
 
   /*
@@ -163,7 +163,7 @@ export class DataService {  //DataService takes care of all http requests and co
   getUserEmail():string{
     return this.user_email;
   }
-   
-  
+
+
 
 }
