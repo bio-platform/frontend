@@ -1,4 +1,22 @@
-<h1>Overview</h1>
+<h1>User Overview</h1>
+<table class="user_info">
+<tr class="user-name">
+    <td>
+        <h2>Name:</h2>
+    </td>
+    <td>
+        {{this.dataService.getUserName()}}
+    </td>
+</tr>
+<tr class="user-email">
+    <td>
+            <h2>Email:</h2>
+    </td>
+    <td>
+        {{this.dataService.getUserEmail()}}
+    </td>
+</tr>
+</table>
 <h2>Limit Summary</h2>
 <table class='computeCharts'>
         <tr>
