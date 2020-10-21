@@ -23,7 +23,7 @@ export class UserOverviewComponent implements OnInit {
     
  }];
 
-  constructor( private dataService: DataService, private messageService : MessageService) { }
+  constructor( public dataService: DataService, private messageService : MessageService) { }
 
   ngOnInit() {
     this.dataService.getLimit().subscribe(
